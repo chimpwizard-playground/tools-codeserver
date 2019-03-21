@@ -1,0 +1,15 @@
+version: "3.2"
+
+services:
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile 
+    image: chimpwizard-playground/ide
+    ports:
+      - 8443:8443
+    command: code-server --allow-http --no-auth
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - ${PWD}:/root/project
